@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'thing',
+    name: '!thing',
     description: 'something',
-    execute(message, args) {
+    async execute(message, args) {
         message.reply(`you called me? here are the args: ${args}`);
     },
 };

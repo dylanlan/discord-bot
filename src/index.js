@@ -27,25 +27,25 @@ function getPhrase(words) {
     return Object.values(botPhrases).find((p) => words.includes(p.phrase));
 }
 
-function executePhrase(phrase, message, words) {
+async function executePhrase(phrase, message, words) {
     try {
-        phrase.execute(message, words);
+        await phrase.execute(message, words);
     } catch (error) {
         console.error(error);
-        message.reply(`Woops, something went wrong trying to parse the \`${phrase}\` phrase`);
+        message.reply(`Woops, something went wrong trying to parse the \`${phrase.phrase}\` phrase`);
     }
 }
 
-function executeCommand(command, message, args) {
+async function executeCommand(command, message, args) {
     try {
-        command.execute(message, args);
+        await command.execute(message, args);
     } catch (error) {
         console.error(error);
-        message.reply(`Woops, something went wrong executing the \`${command}\` command`);
+        message.reply(`Woops, something went wrong executing the \`${command.name}\` command`);
     }
 }
 
-bot.on('message', (message) => {
+bot.on('message', async (message) => {
     if (!message || !message.content || message.content.length === 0) {
         return;
     }
@@ -62,8 +62,8 @@ bot.on('message', (message) => {
     const phrase = getPhrase(lowerCaseWords.join(' '));
     if (command) {
         originalWords.shift();
-        executeCommand(command, message, originalWords);
+        await executeCommand(command, message, originalWords);
     } else if (phrase) {
-        executePhrase(phrase, message, originalWords);
+        await executePhrase(phrase, message, originalWords);
     }
 });
