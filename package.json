@@ -30,5 +30,6 @@
     "eslint-plugin-unicorn": "^42.0.0",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0"
-  }
+  },
+  "packageManager": "yarn@4.0.1"
 }
