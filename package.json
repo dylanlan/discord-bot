@@ -12,7 +12,7 @@
   "author": "Dylan Stankievech",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "chrono-node": "^2.1.4",
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
